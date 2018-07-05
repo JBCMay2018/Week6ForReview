@@ -47,7 +47,9 @@
                     <div th:if="(${car.pictureUrl}!=null)">
                         <img th:src="${car.pictureUrl}" th:alt="${car.model}" width="50%"/>
                     </div>
-                    <input type="file" name="file" class="form-control-file" id="pictureInput">
+                    <input type="file" name="file" class="form-control-file" id="pictureInput" aria-describedby="imageHelp">
+                    <small id="imageHelp" class="form-text text-muted">Choose a new photo or select the same one again.</small>
+
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
