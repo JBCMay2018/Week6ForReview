@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: head-source">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+    <div class="custom-jumbotron">
+        <div class="container">
+            <h1 class="display-4">Nguyen Car Dealers</h1>
+            <p class="lead">Welcome! Add a new car or browse around.</p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="/addcar" role="button">Add a car</a>
+                <a class="btn btn-primary btn-lg" href="/addcategory" role="button">Add a category</a>
+            </p>
+        </div>
+    </div>
+    <h1>Categories:
+        <a th:each="aCategory : ${categories}" th:href="@{/detailcategory/{id}(id=${aCategory.id})}">
+            <span class="badge badge-secondary" th:text="${aCategory.type}"></span>
+        </a></h1>
+
+    <h1>Cars Available</h1>
+    <div class="card text-center" th:each="car : ${cars}">
+        <div class="card-header">
+            <h3 th:inline="text"><strong>[[${car.year}]]</strong> [[${car.make}]] [[${car.model}]]</h3>
+        </div>
+        <div th:if="(${car.pictureUrl}!=null)">
+            <img class="card-img-top" th:src="${car.pictureUrl}" th:alt="${car.model}" width="250px"/>
+        </div>
+        <div th:if="(${car.pictureUrl==null})">
+            <img class="card-img-top" src="/img/default.png" width="250px" />
+        </div>
+        <div class="card-body">
+            <h5 class="card-title" th:inline="text"><strong>MSRP:</strong> [[${car.msrp}]]</h5>
+            <p class="card-text" th:inline="text"><strong>Type:</strong> [[${car.category.type}]]</p>
+            <a th:href="@{/detailcar/{id}(id=${car.id})}" class="btn btn-primary">More Details</a>
+        </div>
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

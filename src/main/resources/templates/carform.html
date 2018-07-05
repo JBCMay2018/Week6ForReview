@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: head-source">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">&nbsp;</div>
+        <div class="col-8">
+            <h3>Add a car</h3>
+            <form action="/addcar" th:object="${car}" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" th:field="*{id}">
+                </div>
+                <div class="form-group">
+                    <label for="makeInput">Manufacturer</label>
+                    <input type="text" class="form-control" id="makeInput" placeholder="Enter a manufacturer" th:field="*{make}">
+                </div>
+                <div class="form-group">
+                    <label for="modelInput">Model</label>
+                    <input type="text" class="form-control" id="modelInput" placeholder="Enter a model" th:field="*{model}">
+                </div>
+                <div class="form-group">
+                    <label for="yearInput">Year</label>
+                    <input type="number" class="form-control" id="yearInput" min="1900" max="2018" th:field="*{year}">
+                </div>
+                <div class="form-group">
+                    <label for="msrpInput">MSRP</label>
+                    <input type="number" class="form-control" id="msrpInput" min="0" step="0.01" th:field="*{msrp}">
+                </div>
+                <div class="form-group">
+                    <label for="categoryInput">Category Type</label>
+                    <!--<input type="hidden" th:field="*{category}" />-->
+                    <select class="form-control" id="categoryInput">
+                        <option th:each="aCategory : ${categories}"  th:field="*{category}"  th:value="${aCategory.id}" th:text="${aCategory.type}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pictureInput">Image</label>
+                    <input type="file" name="file" class="form-control-file" id="pictureInput">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+        <div class="col-2">&nbsp;</div>
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

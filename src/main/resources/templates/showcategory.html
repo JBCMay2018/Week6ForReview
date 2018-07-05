@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: head-source">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+    <h3 th:inline="text">[[${category.id}]] - [[${category.type}]]</h3>
+    <a th:href="@{/updatecategory/{id}(id=${category.id})}" class="btn btn-success">Update</a>
+    <a th:href="@{/deletecategory/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>

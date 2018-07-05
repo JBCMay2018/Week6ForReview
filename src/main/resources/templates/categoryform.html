@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head th:replace="base :: head-source">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<nav th:replace="base :: main-navbar"></nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col-2">&nbsp;</div>
+        <div class="col-8">
+            <h3>Add a car category</h3>
+            <form th:action="@{/addcategory}" th:object="${category}" method="POST">
+                <div class="form-group">
+                    <input type="hidden" class="form-control" th:field="*{id}">
+                </div>
+                <div class="form-group">
+                    <label for="typeInput">Category Type</label>
+                    <input type="text" class="form-control" id="typeInput" placeholder="Enter a category" th:field="*{type}">
+                    <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+        <div class="col-2">&nbsp;</div>
+    </div>
+</div>
+
+<footer th:replace="base :: footer"></footer>
+<div th:replace="base :: scripts"></div>
+</body>
+</html>
