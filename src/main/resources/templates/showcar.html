@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head th:replace="base :: head-source">
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>(Delete if found) Show Car</title>
 </head>
 <body>
 <nav th:replace="base :: main-navbar"></nav>
@@ -14,7 +14,8 @@
     <hr class="my-4">
     <p th:inline="text">
         <strong>MSRP:</strong> $[[${car.msrp}]] <br/>
-        <strong>Type:</strong> [[${carCategory.type}]]</p>
+        <!--<strong>Type:</strong> [[${carCategory.type}]]</p>-->
+        <strong>Type:</strong> [[${car.category.type}]]</p>
     <p class="lead">
         <a th:href="@{/updatecar/{id}(id=${car.id})}" class="btn btn-success">Update</a>
         <a th:href="@{/deletecar/{id}(id=${car.id})}" class="btn btn-danger">Delete</a>
