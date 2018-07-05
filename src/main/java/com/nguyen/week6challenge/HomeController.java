@@ -50,15 +50,13 @@ public class HomeController {
     }
 
     @PostMapping("/addcar")
-    public String processCarForm(@Valid @ModelAttribute("car") Car car, @RequestParam("file") MultipartFile file,
-                                 @RequestParam("category_id") long categoryId) {
+    public String processCarForm(@Valid @ModelAttribute("car") Car car, @RequestParam("file") MultipartFile file) {
         if (file.isEmpty()){
             return "carform";
         }
         try {
             Map uploadResult =  cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
             car.setPictureUrl(uploadResult.get("url").toString());
-            car.setCategory_id(categoryId);
             carRepository.save(car);
         } catch (IOException e){
             e.printStackTrace();
