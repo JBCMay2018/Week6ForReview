@@ -39,8 +39,11 @@
                         <option th:each="aCategory : ${categories}" th:value="${aCategory.id}" th:text="${aCategory.type}"></option>
                     </select>
                 </div>
+                <div th:if="(${car.pictureUrl}!=null)">
+                    <img th:src="${car.pictureUrl}" th:alt="${car.model}" width="50%"/>
+                </div>
                 <div class="form-group">
-                    <label for="pictureInput">Image</label>
+                    <label for="pictureInput">Car Image</label>
                     <input type="file" name="file" class="form-control-file" id="pictureInput">
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>

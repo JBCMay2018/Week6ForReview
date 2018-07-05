@@ -77,7 +77,7 @@ public class HomeController {
     // DOES NOT WORK!!!
     @RequestMapping("/updatecar/{id}")
     public String updateCar(@PathVariable("id") long id, Model model) {
-        model.addAttribute("car", carRepository.findById(id));
+        model.addAttribute("car", carRepository.findById(id).get());
         model.addAttribute("categories", categoryRepository.findAll());
         return "carform";
     }
