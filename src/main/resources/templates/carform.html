@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-2">&nbsp;</div>
         <div class="col-8">
-            <br /> <br />
+            <br/> <br/>
             <h3>Add a car</h3>
             <form action="/addcar" th:object="${car}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
@@ -19,11 +19,13 @@
                 </div>
                 <div class="form-group">
                     <label for="makeInput">Manufacturer</label>
-                    <input type="text" class="form-control" id="makeInput" placeholder="Enter a manufacturer" th:field="*{make}">
+                    <input type="text" class="form-control" id="makeInput" placeholder="Enter a manufacturer"
+                           th:field="*{make}">
                 </div>
                 <div class="form-group">
                     <label for="modelInput">Model</label>
-                    <input type="text" class="form-control" id="modelInput" placeholder="Enter a model" th:field="*{model}">
+                    <input type="text" class="form-control" id="modelInput" placeholder="Enter a model"
+                           th:field="*{model}">
                 </div>
                 <div class="form-group">
                     <label for="yearInput">Year</label>
@@ -36,19 +38,20 @@
                 <div class="form-group">
                     <label for="categoryInput">Category Type</label>
                     <select class="form-control" id="categoryInput" th:field="*{category_id}">
-                        <option th:each="aCategory : ${categories}" th:value="${aCategory.id}" th:text="${aCategory.type}"></option>
+                        <option th:each="aCategory : ${categories}" th:value="${aCategory.id}"
+                                th:text="${aCategory.type}"></option>
                     </select>
-                </div>
-                <div th:if="(${car.pictureUrl}!=null)">
-                    <img th:src="${car.pictureUrl}" th:alt="${car.model}" width="50%"/>
                 </div>
                 <div class="form-group">
                     <label for="pictureInput">Car Image</label>
+                    <div th:if="(${car.pictureUrl}!=null)">
+                        <img th:src="${car.pictureUrl}" th:alt="${car.model}" width="50%"/>
+                    </div>
                     <input type="file" name="file" class="form-control-file" id="pictureInput">
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
-            <br /> <br /> <br /> <br /> <br />
+            <br/> <br/> <br/> <br/> <br/>
         </div>
         <div class="col-2">&nbsp;</div>
     </div>
