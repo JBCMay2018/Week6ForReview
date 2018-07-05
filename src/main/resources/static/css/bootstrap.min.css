@@ -3951,7 +3951,7 @@ tbody.collapse.show {
 }
 
 .card-img-top {
-    width: 100%;
+    width: 50%;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px)
 }
