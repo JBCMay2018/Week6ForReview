@@ -19,17 +19,18 @@ public class Car {
 
     private String pictureUrl;
 
+    private long category_id;
+    //    public Car() {
+//        this.category = new Category();
+//    }
+//
+//    @OneToOne
+//    @JoinColumn(name="category_id")
+//    private Category category;
+
     public long getId() {
         return id;
     }
-
-    public Car() {
-        this.category = new Category();
-    }
-
-    @OneToOne
-//    @JoinColumn(name="category_id")
-    private Category category;
 
     public void setId(long id) {
         this.id = id;
@@ -75,15 +76,24 @@ public class Car {
         this.pictureUrl = pictureUrl;
     }
 
-    public Category getCategory() {
-        return category;
+//    public Category getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
+//
+//    public void addCategory(Category category) {
+//        this.category = category;
+//    }
+
+
+    public long getCategory_id() {
+        return category_id;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
-    public void addCategory(Category category) {
-        this.category = category;
+    public void setCategory_id(long category_id) {
+        this.category_id = category_id;
     }
 }

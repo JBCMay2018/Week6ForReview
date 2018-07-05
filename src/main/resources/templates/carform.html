@@ -11,6 +11,7 @@
     <div class="row">
         <div class="col-2">&nbsp;</div>
         <div class="col-8">
+            <br /> <br />
             <h3>Add a car</h3>
             <form action="/addcar" th:object="${car}" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
@@ -34,9 +35,9 @@
                 </div>
                 <div class="form-group">
                     <label for="categoryInput">Category Type</label>
-                    <!--<input type="hidden" th:field="*{category}" />-->
-                    <select class="form-control" id="categoryInput">
-                        <option th:each="aCategory : ${categories}"  th:field="*{category}"  th:value="${aCategory.id}" th:text="${aCategory.type}"></option>
+                    <!--<input type="hidden" th:field="*{category_id}" />-->
+                    <select class="form-control" id="categoryInput" name="category_id">
+                        <option th:each="aCategory : ${categories}" th:value="${aCategory.id}" th:text="${aCategory.type}"></option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -45,6 +46,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
             </form>
+            <br /> <br /> <br /> <br /> <br />
         </div>
         <div class="col-2">&nbsp;</div>
     </div>

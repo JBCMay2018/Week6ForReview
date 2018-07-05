@@ -6,7 +6,6 @@
 </head>
 <body>
 <nav th:replace="base :: main-navbar"></nav>
-
 <div class="jumbotron">
     <h1 class="display-4">
         <img th:src="${car.pictureUrl}"/>
@@ -15,13 +14,13 @@
     <hr class="my-4">
     <p th:inline="text">
         <strong>MSRP:</strong> $[[${car.msrp}]] <br/>
-        <strong>Type:</strong> [[${car.category.type}]]</p>
+        <strong>Type:</strong> [[${carCategory.type}]]</p>
     <p class="lead">
         <a th:href="@{/updatecar/{id}(id=${car.id})}" class="btn btn-success">Update</a>
         <a th:href="@{/deletecar/{id}(id=${car.id})}" class="btn btn-danger">Delete</a>
     </p>
 </div>
-
+<br /> <br /> <br /> <br /> <br />
 <footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 </body>

@@ -50,15 +50,16 @@ public class HomeController {
     }
 
     @PostMapping("/addcar")
-    public String processCarForm(@Valid @ModelAttribute("car") Car car, @RequestParam("file") MultipartFile file) {
+    public String processCarForm(@Valid @ModelAttribute("car") Car car, @RequestParam("file") MultipartFile file,
+                                 @RequestParam("category_id") long categoryId) {
         if (file.isEmpty()){
-            return "redirect:/addcar";
+            return "carform";
         }
         try {
             Map uploadResult =  cloudc.upload(file.getBytes(), ObjectUtils.asMap("resourcetype", "auto"));
             car.setPictureUrl(uploadResult.get("url").toString());
+            car.setCategory_id(categoryId);
             carRepository.save(car);
-            System.out.println("Car category ID:"+car.getCategory().getId());
         } catch (IOException e){
             e.printStackTrace();
             return "redirect:/add";
@@ -68,7 +69,10 @@ public class HomeController {
 
     @RequestMapping("/detailcar/{id}")
     public String showCar(@PathVariable("id") long id, Model model) {
-        model.addAttribute("car", carRepository.findById(id).get());
+        Car car = carRepository.findById(id).get();
+        Category category = categoryRepository.findById(car.getCategory_id()).get();
+        model.addAttribute("car", car);
+        model.addAttribute("carCategory", category);
         return "showcar";
     }
 
@@ -76,6 +80,7 @@ public class HomeController {
     @RequestMapping("/updatecar/{id}")
     public String updateCar(@PathVariable("id") long id, Model model) {
         model.addAttribute("car", carRepository.findById(id));
+        model.addAttribute("categories", categoryRepository.findAll());
         return "carform";
     }
 

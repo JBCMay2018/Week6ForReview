@@ -29,19 +29,14 @@
             <h3 th:inline="text"><strong>[[${car.year}]]</strong> [[${car.make}]] [[${car.model}]]</h3>
         </div>
         <div th:if="(${car.pictureUrl}!=null)">
-            <img class="card-img-top" th:src="${car.pictureUrl}" th:alt="${car.model}" width="250px"/>
-        </div>
-        <div th:if="(${car.pictureUrl==null})">
-            <img class="card-img-top" src="/img/default.png" width="250px" />
+            <img class="card-img-top" th:src="${car.pictureUrl}" th:alt="${car.model}" width="50%"/>
         </div>
         <div class="card-body">
-            <h5 class="card-title" th:inline="text"><strong>MSRP:</strong> [[${car.msrp}]]</h5>
-            <p class="card-text" th:inline="text"><strong>Type:</strong> [[${car.category.type}]]</p>
-            <a th:href="@{/detailcar/{id}(id=${car.id})}" class="btn btn-primary">More Details</a>
+            <a th:href="@{/detailcar/{id}(id=${car.id})}" class="btn btn-primary btn-lg">More Details</a>
         </div>
     </div>
 </div>
-
+<br /> <br /> <br /> <br /> <br />
 <footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 </body>

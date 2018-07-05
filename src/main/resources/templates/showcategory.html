@@ -6,13 +6,13 @@
 </head>
 <body>
 <nav th:replace="base :: main-navbar"></nav>
-
+<br /> <br /> <br /> <br /> <br />
 <div class="container">
     <h3 th:inline="text">[[${category.id}]] - [[${category.type}]]</h3>
     <a th:href="@{/updatecategory/{id}(id=${category.id})}" class="btn btn-success">Update</a>
     <a th:href="@{/deletecategory/{id}(id=${category.id})}" class="btn btn-danger">Delete</a>
 </div>
-
+<br /> <br /> <br /> <br /> <br />
 <footer th:replace="base :: footer"></footer>
 <div th:replace="base :: scripts"></div>
 </body>

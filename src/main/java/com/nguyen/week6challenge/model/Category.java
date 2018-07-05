@@ -11,8 +11,8 @@ public class Category {
 
     private String type;
 
-    @OneToOne(mappedBy = "category")
-    private Car car;
+//    @OneToOne(mappedBy = "category")
+//    private Car car;
 
     public long getId() {
         return id;
@@ -30,20 +30,20 @@ public class Category {
         this.type = type;
     }
 
-    public Car getCar() {
-        return car;
-    }
+//    public Car getCar() {
+//        return car;
+//    }
+//
+//    public void setCar(Car car) {
+//        this.car = car;
+//    }
 
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    @Override
-    public String toString() {
-        return "Category{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", car=" + car +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Category{" +
+//                "id=" + id +
+//                ", type='" + type + '\'' +
+//                ", car=" + car +
+//                '}';
+//    }
 }
