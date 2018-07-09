@@ -18,7 +18,7 @@
             </p>
         </div>
     </div>
-    <h1>Categories:
+    <h1>Categories: <span th:text="${numOfCategories}"></span>
         <a th:each="aCategory : ${categories}" th:href="@{/detailcategory/{id}(id=${aCategory.id})}">
             <span class="badge badge-secondary" th:text="${aCategory.type}"></span>
         </a></h1>

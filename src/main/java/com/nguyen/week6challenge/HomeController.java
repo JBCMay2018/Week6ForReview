@@ -33,6 +33,7 @@ public class HomeController {
     public String indexPage(Model model) {
         model.addAttribute("cars", carRepository.findAll());
         model.addAttribute("categories", categoryRepository.findAll());
+        model.addAttribute("numOfCategories", categoryRepository.count());
         return "index";
     }
 
@@ -44,9 +45,14 @@ public class HomeController {
 
     @GetMapping("/addcar")
     public String loadCarForm(Model model) {
-        model.addAttribute("car", new Car());
-        model.addAttribute("categories", categoryRepository.findAll());
-        return "carform";
+        if (categoryRepository.count()<1) {
+            return "redirect:/addcategory";
+        }
+        else {
+            model.addAttribute("car", new Car());
+            model.addAttribute("categories", categoryRepository.findAll());
+            return "carform";
+        }
     }
 
     @PostMapping("/addcar")
